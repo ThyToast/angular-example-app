@@ -29,8 +29,8 @@ export class RecipeDetailPage implements OnInit {
     });
   }
 
-  onDeleteRecipe() {
-    this.alertController.create({
+  async onDeleteRecipe() {
+    const alert = await this.alertController.create({
       header: "Deleting recipe",
       message: "Confirm action",
       buttons: [
@@ -44,5 +44,6 @@ export class RecipeDetailPage implements OnInit {
         },
       ],
     });
+    await alert.present()
   }
 }
