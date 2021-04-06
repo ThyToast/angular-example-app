@@ -9,8 +9,21 @@ const routes: Routes = [
   },
   {
     path: "recipe",
-    loadChildren: () =>
-      import("./recipe/recipe.module").then((m) => m.RecipePageModule),
+
+    children: [
+      {
+        path: "",
+        loadChildren: () =>
+          import("./recipe/recipe.module").then((m) => m.RecipePageModule),
+      },
+      {
+        path: ":recipeId",
+        loadChildren: () =>
+          import("./recipe/recipe-detail/recipe-detail.module").then(
+            (m) => m.RecipeDetailPageModule
+          ),
+      },
+    ],
   },
 ];
 
